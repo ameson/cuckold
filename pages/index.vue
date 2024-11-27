@@ -2,32 +2,42 @@
   <div class="py-8">
     <div class="max-w-6xl mx-auto px-4">
       <!-- 首页模块选择 -->
-      <div v-if="currentStep === 'welcome'" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-        <!-- 绿帽指数检测 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow cursor-pointer" @click="startDetective">
-          <div class="text-center">
-            <h2 class="text-xl md:text-2xl font-bold text-green-800 mb-3 md:mb-4">行为检测</h2>
-            <p class="text-sm md:text-base text-gray-600 mb-6 md:mb-8">全方位分析Ta的可疑行为，给出专业风险评估</p>
-            <div class="mb-6 md:mb-8">
-              <img src="/images/detective.svg" alt="侦探" class="mx-auto h-24 md:h-32">
-            </div>
-            <el-button type="success" size="large" class="w-full md:w-auto">
-              开始检测
-            </el-button>
-          </div>
+      <div v-if="currentStep === 'welcome'" class="space-y-8">
+        <!-- 相亲指数链接 -->
+        <div class="text-center mb-8">
+          <a href="https://bd.qioo.fun" target="_blank" class="inline-block px-8 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <span class="text-xl">💘 单身男生必看：测测你的相亲指数！</span>
+          </a>
         </div>
 
-        <!-- 情感解密 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow cursor-pointer" @click="startDecoder">
-          <div class="text-center">
-            <h2 class="text-xl md:text-2xl font-bold text-green-800 mb-3 md:mb-4">关系分析</h2>
-            <p class="text-sm md:text-base text-gray-600 mb-6 md:mb-8">深入解析Ta的历史轨迹，预测潜在风险</p>
-            <div class="mb-6 md:mb-8">
-              <img src="/images/decoder.svg" alt="解密" class="mx-auto h-24 md:h-32">
+        <!-- 功能模块 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+          <!-- 绿帽指数检测 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow cursor-pointer" @click="startDetective">
+            <div class="text-center">
+              <h2 class="text-xl md:text-2xl font-bold text-green-800 mb-3 md:mb-4">行为检测</h2>
+              <p class="text-sm md:text-base text-gray-600 mb-6 md:mb-8">全方位分析Ta的可疑行为，给出专业风险评估</p>
+              <div class="mb-6 md:mb-8">
+                <img src="/images/detective.svg" alt="侦探" class="mx-auto h-24 md:h-32">
+              </div>
+              <el-button type="success" size="large" class="w-full md:w-auto">
+                开始检测
+              </el-button>
             </div>
-            <el-button type="primary" size="large" class="w-full md:w-auto">
-              开始解密
-            </el-button>
+          </div>
+
+          <!-- 情感解密 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow cursor-pointer" @click="startDecoder">
+            <div class="text-center">
+              <h2 class="text-xl md:text-2xl font-bold text-green-800 mb-3 md:mb-4">情感状态分析</h2>
+              <p class="text-sm md:text-base text-gray-600 mb-6 md:mb-8">深入解析Ta的历史轨迹，预测潜在风险</p>
+              <div class="mb-6 md:mb-8">
+                <img src="/images/decoder.svg" alt="解密" class="mx-auto h-24 md:h-32">
+              </div>
+              <el-button type="primary" size="large" class="w-full md:w-auto">
+                开始分析
+              </el-button>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +98,7 @@
 
       <!-- 检测结果页面 -->
       <div v-else-if="currentStep === 'result'" class="space-y-6">
-        <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="bg-white rounded-lg shadow-lg p-8" ref="resultCard">
           <h2 class="text-2xl font-bold text-green-800 mb-6 text-center">行为检测</h2>
           
           <!-- 风险指数 -->
@@ -133,21 +143,42 @@
           <div class="mb-8">
             <h3 class="text-xl font-semibold mb-4 flex items-center">
               <span class="mr-2">💡</span>
-              专业建议
+              建议
             </h3>
-            <div class="bg-yellow-50 rounded-lg p-4">
+            <div class="bg-green-50 rounded-lg p-4">
               <p class="text-gray-700">{{ suggestion }}</p>
             </div>
           </div>
 
+          <!-- 二维码 -->
+          <div class="text-center mt-8 bg-blue-50 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-4 flex items-center justify-center">
+              <span class="mr-2">📱</span>
+              分享给好友
+            </h3>
+            <QRCode class="inline-block" />
+            <p class="text-sm text-gray-600 mt-4">扫码分享给好友，一起测测！</p>
+            <p class="text-xs text-blue-500 mt-2">cuckold.qioo.fun</p>
+          </div>
+
           <!-- 操作按钮 -->
-          <div class="text-center space-x-4">
-            <el-button type="primary" @click="startDecoder" size="large">
-              进行关系分析
-            </el-button>
-            <el-button type="success" @click="restart" size="large">
-              重新检测
-            </el-button>
+          <div class="text-center">
+            <div class="space-x-4 mb-6">
+              <el-button type="primary" @click="startDecoder" size="large">
+                进行情感分析
+              </el-button>
+              <el-button type="success" @click="restart" size="large">
+                重新检测
+              </el-button>
+              <el-button type="info" @click="saveAsImage" size="large">
+                保存为图片
+              </el-button>
+            </div>
+            <div class="mt-4">
+              <a href="https://bd.qioo.fun" target="_blank" class="inline-block px-6 py-3 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-all duration-300 transform hover:scale-105">
+                👉 单身？来测测你的相亲指数吧！👈
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -158,6 +189,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { ElMessage } from 'element-plus'
+import QRCode from '~/components/QRCode.vue'
+import html2canvas from 'html2canvas'
+
+const resultCard = ref(null)
 
 // 状态管理
 const currentStep = ref('welcome')
@@ -219,7 +254,7 @@ const startDetective = () => {
 
 const startDecoder = () => {
   ElMessage({
-    message: '功能开发中，敬请期待...',
+    message: '功能开发中，敬请期待...)',
     type: 'info',
     duration: 3000
   })
@@ -338,6 +373,81 @@ const showResult = () => {
 const restart = () => {
   currentStep.value = 'welcome'
   resetState()
+}
+
+// 保存为图片
+const saveAsImage = async () => {
+  try {
+    if (!resultCard.value) return
+    
+    // 创建canvas
+    const canvas = await html2canvas(resultCard.value, {
+      useCORS: true,
+      scale: 2, // 提高清晰度
+      backgroundColor: '#ffffff',
+      logging: false
+    })
+
+    // 转换为图片
+    const image = canvas.toDataURL('image/png')
+    
+    // 判断是否在微信浏览器中
+    const isWechat = /MicroMessenger/i.test(navigator.userAgent)
+    
+    if (isWechat) {
+      // 在微信中显示提示
+      ElMessage({
+        message: '请长按图片保存',
+        type: 'success',
+        duration: 3000
+      })
+      
+      // 创建图片元素
+      const img = document.createElement('img')
+      img.src = image
+      img.style.maxWidth = '100%'
+      img.style.height = 'auto'
+      
+      // 创建遮罩层
+      const overlay = document.createElement('div')
+      overlay.style.position = 'fixed'
+      overlay.style.top = '0'
+      overlay.style.left = '0'
+      overlay.style.width = '100%'
+      overlay.style.height = '100%'
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.8)'
+      overlay.style.zIndex = '9999'
+      overlay.style.display = 'flex'
+      overlay.style.justifyContent = 'center'
+      overlay.style.alignItems = 'center'
+      overlay.style.padding = '20px'
+      
+      // 点击遮罩层关闭
+      overlay.onclick = () => {
+        document.body.removeChild(overlay)
+      }
+      
+      overlay.appendChild(img)
+      document.body.appendChild(overlay)
+    } else {
+      // 在其他浏览器中直接下载
+      const link = document.createElement('a')
+      link.download = '绿帽指数检测报告.png'
+      link.href = image
+      link.click()
+      
+      ElMessage({
+        message: '图片已保存',
+        type: 'success'
+      })
+    }
+  } catch (error) {
+    console.error('保存图片失败:', error)
+    ElMessage({
+      message: '保存失败，请重试',
+      type: 'error'
+    })
+  }
 }
 </script>
 
