@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Detective Hat -->
+    <path d="M20 40 L108 40 L114 50 L14 50 Z" fill="#333"/>
+    <path d="M35 30 L93 30 L108 40 L20 40 Z" fill="#444"/>
+    
+    <!-- Magnifying Glass -->
+    <g transform="translate(60,75) rotate(-30)">
+        <!-- Handle -->
+        <rect x="15" y="-2" width="25" height="8" rx="4" fill="#666"/>
+        <!-- Glass -->
+        <circle cx="0" cy="0" r="15" fill="none" stroke="#666" stroke-width="4"/>
+        <!-- Reflection -->
+        <path d="M-8,-8 L-4,-4" stroke="#999" stroke-width="2"/>
+    </g>
+</svg>

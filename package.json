@@ -1,0 +1,25 @@
+{
+  "name": "green",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.7.0",
+    "element-plus": "^2.4.3",
+    "animate.css": "^4.1.1",
+    "dayjs": "^1.11.10",
+    "lodash-unified": "^1.0.3"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.10.1",
+    "@element-plus/nuxt": "^1.0.7",
+    "nuxt": "^3.8.2",
+    "sass": "^1.69.5"
+  }
+}

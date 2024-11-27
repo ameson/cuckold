@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- 帽子 -->
+        <path d="M60,70 C60,40 140,40 140,70 L140,80 L60,80 Z" fill="#333333"/>
+        <path d="M50,80 L150,80 L140,90 L60,90 Z" fill="#4A4A4A"/>
+        
+        <!-- 脸 -->
+        <circle cx="100" cy="110" r="30" fill="#FFD700"/>
+        
+        <!-- 眼睛 -->
+        <circle cx="85" cy="105" r="5" fill="#333333"/>
+        <circle cx="115" cy="105" r="5" fill="#333333"/>
+        
+        <!-- 放大镜 -->
+        <circle cx="140" cy="140" r="15" stroke="#333333" stroke-width="3"/>
+        <line x1="150" y1="150" x2="170" y2="170" stroke="#333333" stroke-width="3"/>
+        
+        <!-- 微笑 -->
+        <path d="M85,120 Q100,130 115,120" stroke="#333333" stroke-width="2" fill="none"/>
+    </g>
+</svg>
