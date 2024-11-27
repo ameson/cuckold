@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   devtools: { enabled: true },
   modules: [
     '@element-plus/nuxt',
@@ -43,6 +44,7 @@ export default defineNuxtConfig({
   },
   // 添加调试配置
   nitro: {
+    preset: 'netlify',
     debug: true
   },
   // 开发服务器配置
